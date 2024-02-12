@@ -6,12 +6,12 @@ plugins {
 }
 
 android {
-    namespace = "com.alacrity.template.app"
+    namespace = "com.alacrity.agora_gallery.app"
     compileSdk = Dependencies.android.compileSdk
     buildToolsVersion = Dependencies.android.buildTools
 
     defaultConfig {
-        applicationId = "com.alacrity.template"
+        applicationId = "com.alacrity.agora_gallery"
         minSdk = Android.minSdk
         targetSdk = Android.targetSdk
         versionCode = 1
@@ -26,10 +26,20 @@ android {
 
     buildTypes {
         debug {
-            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+            buildConfigField("String", "BASE_URL", "\"https://api.unsplash.com/\"")
+            buildConfigField(
+                "String",
+                "ACCESS_KEY",
+                "\"tXv8eoxALDAMicepbiLE0swZ8E_-J0v-jpzu0qCUo1A\""
+            )
         }
         release {
-            buildConfigField("String", "BASE_URL", "\"https://jsonplaceholder.typicode.com\"")
+            buildConfigField(
+                "String",
+                "ACCESS_KEY",
+                "\"tXv8eoxALDAMicepbiLE0swZ8E_-J0v-jpzu0qCUo1A\""
+            )
+            buildConfigField("String", "BASE_URL", "\"https://unsplash.com\"")
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),

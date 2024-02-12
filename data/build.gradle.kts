@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "com.alacrity.template.data"
+    namespace = "com.alacrity.agora_gallery.data"
     compileSdk = Dependencies.android.compileSdk
     buildToolsVersion = Dependencies.android.buildTools
 
@@ -21,11 +21,17 @@ android {
 
     buildTypes {
         release {
+            buildConfigField(
+                "String",
+                "ACCESS_KEY",
+                "\"tXv8eoxALDAMicepbiLE0swZ8E_-J0v-jpzu0qCUo1A\""
+            )
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
         }
     }
     compileOptions {
