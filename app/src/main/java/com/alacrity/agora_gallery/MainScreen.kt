@@ -1,11 +1,15 @@
 package com.alacrity.agora_gallery
 
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.LinearProgressIndicator
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
+import androidx.core.app.ActivityCompat
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.alacrity.agora_gallery.main.MainViewModel
 import com.alacrity.agora_gallery.main.models.backToHomeScreen
@@ -53,5 +57,15 @@ fun MainScreen(
     LaunchedEffect(key1 = state, block = {
         viewModel.enterScreen()
     })
+
+    val activity = (LocalContext.current as Activity)
+
+    BackHandler {
+        when(state) {
+            is MainViewState.DetailsScreen -> viewModel.backToHomeScreen()
+            else -> ActivityCompat.finishAfterTransition(activity)
+        }
+
+    }
 
 }
